@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<head>
+    
+<title>My First Website</title>
+<link rel="stylesheet" href="CSS/objects.css">
+<link rel="jscode" href="JS/nav.js">
+
+</head>
+
+<body>
+
+
+<header class="site-header">
+    <div class="navbox navbar-row" style="height:84px;">
+        <div class="site-title" style="position:absolute; left:18px; color:white; font-weight:700;">West Suffolk Wolves</div>
+
+        <nav class="nav-links nav-small sticky" aria-label="Main navigation">
+            <a href="index.html">HOME</a>
+            <a href="players list.html">PLAYERS</a>
+            <a href="games.html">GAMES</a>
+            <a href="stats.html">STATS</a>
+            <a href="social.html">INFO</a>
+        </nav>
+
+        <div class="header-right-logo">
+            <img src="IMAGES/logo.png" alt="WSW Logo" class="small-logo">
+        </div>
+    </div>
+</header>
+<div class="contentWindow">
+
+        <!-- Home two-column content: left details + right team bio -->
+        <img src="IMAGES/news.png" alt="News Banner" class="news-banner">
+        <div class="home-grid">
+            <aside class="team-info">
+                <h2>West Suffolk Wolves</h2>
+                <ul>
+                    <li><strong>Country</strong>: United Kingdom</li>
+                    <li><strong>Tag</strong>: WSC_Apex</li>
+                    <li><strong>Seeding</strong>: -</li>
+                    <li><strong>Status</strong>: Confirmed</li>
+                    <li><strong>Website</strong>: <a href="https://www.wsc.ac.uk/esports">www.wsc.ac.uk/esports</a></li>
+                    <li><strong>Facebook</strong>: <a href="https://www.facebook.com/WestSuffolkCollegeEsports">WestSuffolkCollegeEsports</a></li>
+                    <li><strong>Twitch</strong>: <a href="https://www.twitch.tv/wsc_esports">wsc_esports</a></li>
+                </ul>
+
+                <p class="muted">Disclaimer: This team may have mature students (over the age of 19) participating.</p>
+            </aside>
+
+            <main class="team-right">
+                <img src="IMAGES/logo.png" alt="WSW Logo" class="page-logo">
+                <h2>Team Bio:</h2>
+                <div class="team-bio">
+                    <p>The West Suffolk Wolves are a highly competitive esports team representing West Suffolk College in the thrilling world of Apex Legends. As part of the college's Level 3 Esports qualification, the Wolves develop their skills, techniques, and strategies while competing against some of the best student teams in the UK. The Wolves made their mark during the recent Apex Cup, holding their own in a fiercely competitive field and achieving an impressive 5th place out of 20 teams in the finals. This accomplishment reflects their dedication, teamwork, and passion for the game.</p>
+
+                    <p>Competing in the British Esports Student Championships, the Wolves embody their core values of integrity and honour, striving to deliver their best performance every time they pick up their controllers. Beyond the game, they take pride in representing their college and demonstrating the practical application of their studies in a professional esports environment. The West Suffolk Wolves are more than just a team; they are a symbol of resilience, skill, and sportsmanship, with their sights firmly set on future triumphs.</p>
+                </div>
+            </main>
+        </div>
+
+    <!-- Footer removed per request -->
+
+</div>
+
+<script src="JS/nav.js">
+    (function(){
+        const navWrap = document.querySelector('.nav-small');
+        const content = document.querySelector('.contentWindow');
+        if(!navWrap || !content) return;
+        let navOffset = navWrap.offsetTop;
+        function onScroll(){
+            if(window.scrollY >= navOffset){
+                if(!navWrap.classList.contains('fixed')){
+                    navWrap.classList.add('fixed');
+                    content.style.paddingTop = navWrap.offsetHeight + 'px';
+                }
+            } else {
+                if(navWrap.classList.contains('fixed')){
+                    navWrap.classList.remove('fixed');
+                    content.style.paddingTop = '';
+                }
+            }
+        }
+        window.addEventListener('scroll', onScroll);
+        window.addEventListener('resize', function(){
+            // recompute offset and remove fixed if necessary to avoid sticky mismatch
+            navWrap.classList.remove('fixed');
+            content.style.paddingTop = '';
+            navOffset = navWrap.offsetTop;
+            onScroll();
+        });
+    })();</script>
+</body>
+
+</html>
