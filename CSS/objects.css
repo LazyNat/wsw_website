@@ -1,0 +1,419 @@
+/* navbar sticks to edge */
+
+
+.navbox{
+  background-color: #0b1226; /* dark blue navbar */
+  color: white;
+  width: 100%;
+  border: none; /* remove white box border to merge */
+  padding: 10px 18px;
+  margin: 0;
+  position: static;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* center nav links horizontally */
+  position: relative; /* allow absolute-positioned logo */
+}
+
+/* horizontal navigation layout */
+.nav-links{
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+.navbox .nav-links{margin: 0 auto}
+
+/* position the logo group to the far left while keeping nav centered */
+.nav-left{position: absolute; left: 18px; display:flex; align-items:center; gap:12px}
+.nav-links h1{margin:0; font-size:1.2rem; color: white}
+.nav-links a{color: white; text-decoration: none; padding: 10px 16px; display:inline-block; font-size:1.25rem; font-weight:700; letter-spacing:1px}
+
+/* --- Hero banner + centered nav with right logo --- */
+.hero-banner{width:100%; background:#000; padding:10px 0 0 0}
+.hero-banner-img{display:block; max-width:1100px; width:100%; margin:0 auto; border:3px solid rgba(200,20,20,0.9)}
+.navbar-row{width:100%; display:flex; align-items:center; justify-content:center; padding:12px 0; position:relative}
+.navbar-row .nav-links{margin:0 auto; gap:32px}
+.navbar-row .nav-links a{text-transform:uppercase}
+.header-right-logo{position:absolute; right:18px; top:50%; transform:translateY(-50%)}
+.small-logo{height:64px}
+
+
+
+/* make sizing predictable and responsive */
+
+
+/* add top margin to body so content doesn't hide behind fixed navbar */
+body{
+  margin: 0;
+  padding: 20px;
+  margin-top: 60px;
+  font-family: "Bookman Old Style", "Bookman", serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* dark page background for all pages */
+body{
+  background-color: #000000;
+  color: #e9e9e9;
+}
+
+/* make box sizing predictable (important for grids) */
+*, *::before, *::after{box-sizing: border-box}
+
+/* keep page content centered so grids line up */
+.contentWindow{ margin:0 auto; padding:18px}
+
+/* Hero banner */
+.hero{display:flex; align-items:center}
+.hero h1{font-size:1rem; margin:0}
+.hero-logo{height:80px; vertical-align:middle; margin-right:14px}
+
+/* small nav row (thin bar) */
+.nav-small{height:40px; display:flex; align-items:center; justify-content:center}
+/* make the nav itself a centered flex container with the same max width as content */
+.nav-small nav{display:flex; gap:12px; align-items:center; justify-content:center; max-width:1100px; margin:0 auto; width:100%}
+.nav-small .nav-label{display:none}
+.nav-small a{color:white; text-decoration:none; font-size:1.25rem; font-weight:700; padding:8px 12px}
+
+/* Make the nav wrapper sticky - more reliable across browsers */
+.nav-small.sticky{
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #0b1226;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+/* When sticky, ensure the inner nav keeps the centered content width */
+.nav-small.sticky nav{max-width:1100px; margin:0 auto; width:100%;}
+
+/* welcome box */
+.welcome{width: 100%; text-align:center}
+
+/* featured players grid */
+.featured-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:18px; width:100%; margin:18px 0}
+.featured-item{padding:24px; text-align:center; min-height:140px; display:flex; align-items:center; justify-content:center}
+
+/* quick links row */
+.quick-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:18px; width:100%; margin:18px 0}
+.quick-item{padding:18px; text-align:center; min-height:80px; display:flex; align-items:center; justify-content:center}
+
+/* footer */
+.footer{ text-align:center}
+
+.sticky {position: sticky; top: 0;background: #0b1226; z-index: 1000; box-shadow: 0 2px 6px rgba(0,0,0,0.06); padding:6px 0;}
+
+/* responsive adjustments */
+@media (max-width:900px){
+  .featured-grid, .quick-grid{grid-template-columns:repeat(2, 1fr)}
+}
+@media (max-width:600px){
+  .featured-grid, .quick-grid{grid-template-columns:1fr}
+  .nav-links{flex-direction:column}
+  .nav-small nav{flex-wrap:wrap; gap:8px}
+}
+
+/* fixed nav (JS-driven) */
+.nav-small.fixed{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1500;
+  background: #0b1226;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+}
+.nav-small.fixed nav{max-width:1100px; margin:0 auto;}
+
+
+/* base box for elements */
+.box{
+  width: 100%;
+  background-color: #0f1115;
+  border: 2px solid #b91c1c;
+  padding: 20px;
+  color: #e9e9e9;
+}
+.box h2, .box h3{ color:#fff; margin-top:0 }
+.box ul, .box li{ color:#e9e9e9 }
+
+/* centered large box (welcome/footer) */
+.box.centered{
+  width: 100%;
+  padding:50px;
+  
+  margin: auto;
+  position: static;
+  background-color: #0f1115;
+  color: #e9e9e9;
+}
+
+.scroll-box{
+  width: 100%;
+  background-color: #0f1115;
+  border: 2px solid #b91c1c;
+  padding: 10px;
+  margin: auto;
+  position: static;
+  max-height: 600px;
+  overflow-y: scroll;
+  color: #e9e9e9;
+}
+.list-box{
+  width: 100%;
+  background-color: #0f1115;
+  border: 2px solid #b91c1c;
+  padding: 10px;
+  text-align: center;
+  position: static;
+}
+.list-box a{ color:#b91c1c; text-decoration: none; font-weight:600 }
+.list-box a:hover{ color:#00d4ff; text-decoration: underline }
+.bottom-left {position: absolute; bottom: 10px; left: 10px;}
+.bottom-right {position: absolute; bottom: 10px; right: 10px;}
+.right {float: right;}
+.left {float: left;}
+.player-box{
+  width: 15%;
+  background-color: #0f1115;
+  border: 2px solid #b91c1c;
+  padding: 10px;
+  margin: auto;
+  align-self: left;
+  margin-bottom: 18px;
+}
+.player-image{
+  width:230px;
+  height:auto;
+}
+.stats-image{
+  width:400px;
+  height:auto;
+}
+.player-stats{
+  
+  background-color: #0f1115;
+  border: 2px solid #b91c1c;
+  padding: 10px;
+  margin: auto;
+  align-self: left;
+  margin-bottom: 18px;
+  margin-left: 30px;
+  color: #e9e9e9;
+}
+.player-stats h3{ color:#fff; margin-top:0 }
+.player-stats ul{ list-style: disc inside; color:#e9e9e9 }
+.player-stats li{ margin: 6px 0 }
+.player-name-box{
+  width: 100%;
+  background-color: #0f1115;
+  border: 2px solid #b91c1c;
+  padding: 10px;
+  margin: auto;
+  position: static;
+  text-align: center;
+  color: #e9e9e9;
+}
+.player-name-box h2{ color:#fff; margin:0 }
+/* --- Competitions page --- */
+.competitions-page{
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Event card grid */
+.event-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 12px;
+}
+
+/* Event cards */
+.event-card{
+  border: 2px solid #b91c1c;
+  padding: 16px;
+  background: #0f1115;
+  color: #e9e9e9;
+}
+.event-card h3{ color:#fff; margin-top:0 }
+.event-card img{
+  width: 60px;
+  height: auto;
+  margin-bottom: 10px;
+}
+.event-card h3{
+  margin-top: 0;
+}
+
+/* Result cards (slightly different emphasis) */
+.event-card.result{
+  background: #1a1f2e;
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  .event-grid{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 600px){
+  .event-grid{
+    grid-template-columns: 1fr;
+  }
+}
+/* --- Team stats page layout --- */
+.stats-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* --- Home page two-column layout (left details + right bio) --- */
+.news-banner{
+  display: block;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto 24px auto;
+  padding: 0;
+  border: 2px solid #ff6b6b;
+}
+
+.home-grid{
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 28px;
+  align-items: start;
+  padding: 12px 0;
+}
+.team-info{ color: #e9e9e9; background:#0f1115; padding:20px; border: 2px solid #b91c1c }
+.team-info h2{ margin-top:0; color:#fff; font-weight:700; }
+.team-info li strong{ color:#00d4ff }
+.team-info ul{ list-style: disc inside; color:#e9e9e9 }
+.team-info a{ color:#b91c1c; text-decoration: none; }
+.team-info a:hover{ text-decoration: underline; }
+.team-bio{ color:#e9e9e9; line-height:1.6; }
+.team-right h2{ color:#fff; margin-top:0 }
+.page-logo{ position: absolute; right: 0; top: 0; width:86px }
+.team-right{ position: relative; padding-right: 100px; background:#0f1115; padding:20px; border: 2px solid #b91c1c }
+
+/* small news badge overlay on homepage */
+.news-badge{
+  display: none;
+}
+
+@media (max-width: 900px){
+  .home-grid{ grid-template-columns: 1fr; }
+  .team-right{ padding-right:0 }
+  .page-logo{ position: static; display:block; margin: 8px 0 12px auto }
+  .news-badge{ display: none; }
+}
+
+/* Team summary top box */
+.team-summary h2 { margin: 0 0 8px 0; color:#fff }
+.team-summary p { margin: 6px 0; color: #e9e9e9; }
+
+/* Combined table + chart area */
+.table-chart-wrap {
+  display: grid;
+  grid-template-columns: 1fr 380px; /* table left, chart right */
+  gap: 18px;
+  align-items: start;
+}
+
+/* Table styles */
+.table-wrap h3, .chart-wrap h3 { margin-top: 0; color:#fff }
+.table-responsive { overflow-x: auto; }
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.stats-table th, .stats-table td {
+  border: 1px solid #444;
+  padding: 10px;
+  text-align: left;
+  color: #e9e9e9;
+}
+.stats-table thead th {
+  background: #1a1f2e;
+  font-weight: 700;
+  color: #fff;
+}
+.stats-table tbody tr:nth-child(even) { background: #131820; }
+
+/* Chart image */
+.chart-image { width: 100%; height: auto; display: block; max-height: 250px; object-fit: contain; }
+
+/* small muted helper */
+.muted { color:#888; font-size:0.95rem; }
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .table-chart-wrap { grid-template-columns: 1fr; }
+  .chart-wrap { order: 2; }
+  .table-wrap { order: 1; }
+}
+/* --- Socials page --- */
+.social-page{
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Social links grid */
+.social-grid{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+  text-align: center;
+}
+
+/* Social cards */
+.social-card{
+  border: 1.5px solid #b91c1c;
+  padding: 20px;
+  background: #0f1115;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+.social-card:hover{
+  background: #1a1f2e;
+  border-color: #00d4ff;
+}
+
+/* Embedded content placeholder */
+.embed-placeholder{
+  height: 300px;
+  border: 1.5px dashed #999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #666;
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  .social-grid{
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 600px){
+  .social-grid{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
